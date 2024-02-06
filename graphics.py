@@ -9,7 +9,7 @@ class Window:
         self.__root.title("Maze")
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
         self.__canvas = Canvas(self.__root, width = self.width, height=self.height)
-        self.__canvas.pack()
+        self.__canvas.pack(fill=BOTH, expand=1)
         self.__running = False
         
 
@@ -45,7 +45,7 @@ class Line:
     def draw(self, canvas, fill_color= "black"):
         canvas.create_line(self.point1.pos_x, self.point1.pos_y,self.point2.pos_x,self.point2.pos_y,
          fill= fill_color,width=2 )
-        canvas.pack()
+        canvas.pack(fill=BOTH, expand=1)
 
 
             

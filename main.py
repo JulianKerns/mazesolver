@@ -3,30 +3,32 @@ from cell import Cell
 
 def main():
     win = Window(800,600)
-    cell = Cell(win)
-    cell.draw_cell(50,50,100,100)
+    cell1 = Cell(win)
+    cell1.has_right_wall = False
+    cell1.draw_cell(50,50,100,100)
 
-    cell = Cell(win)
-    cell.has_left_wall = False
-    cell.draw_cell(150,150,200,200)
+    cell2 = Cell(win)
+    cell2.has_left_wall = False
+    cell2.has_bottom_wall = False
+    cell2.draw_cell(100,50,150,100)
 
-    cell = Cell(win)
-    cell.has_right_wall = False
-    cell.draw_cell(120,120,400,400)
+    cell1.draw_move(cell2)
 
-    cell = Cell(win)
-    cell.has_left_wall = False
-    cell.has_top_wall = False
-    cell.draw_cell(200,200,500,500)
+    cell3 = Cell(win)
+    cell3.has_top_wall = False
+    cell3.has_right_wall = False
+    cell3.draw_cell(100,100,150,150)
 
-    
+    cell2.draw_move(cell3)
 
-    
-    
-    
-    
-    
-    win.wait_for_close()
+    cell4 = Cell(win)
+    cell4.has_left_wall = False
+    cell4.draw_cell(150,100,200,150)
+
+    cell3.draw_move(cell4,True)
+
+   
+    win.wait_for_close()  
 
 main()
 
