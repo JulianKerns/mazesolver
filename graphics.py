@@ -46,4 +46,13 @@ class Line:
         canvas.create_line(self.point1.pos_x, self.point1.pos_y,self.point2.pos_x,self.point2.pos_y,
          fill= fill_color,width=2 )
         canvas.pack()
+
+
+            
+
+
+
+
+
+
         
