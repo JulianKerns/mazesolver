@@ -49,13 +49,12 @@ class Tests(unittest.TestCase):
         self.assertEqual(m1._cells[-1][-1].has_bottom_wall, False)
 
 
-    
-
-            
-
-
-
-
+    def test_maze_break_walls_r_and_revisited(self):
+        num_cols = 5
+        num_rows = 5
+        m1 = Maze(20, 20, num_rows, num_cols, 50 , 50, None , 10)
+        self.assertEqual(m1._cells[0][0]._visited,False)
+        self.assertEqual(m1._cells[-1][-1]._visited, False)
 
 if __name__ == "__main__":
     unittest.main()
