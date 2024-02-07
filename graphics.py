@@ -1,5 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
-import time
+
 
 
 class Window:
@@ -9,7 +9,7 @@ class Window:
         self.__root = Tk()
         self.__root.title("Maze")
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
-        self.__canvas = Canvas(self.__root, width = self.width, height=self.height)
+        self.__canvas = Canvas(self.__root, bg= "white", width = self.width, height=self.height)
         self.__canvas.pack(fill=BOTH, expand=1)
         self.__running = False
         

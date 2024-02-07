@@ -2,7 +2,7 @@ from graphics import Window, Point, Line
 
 
 class Cell:
-    def __init__(self, win):
+    def __init__(self, win=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -15,6 +15,8 @@ class Cell:
 
 
     def draw_cell(self ,x1 ,y1 ,x2, y2):
+        if self._win is None:
+            return
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
@@ -22,15 +24,28 @@ class Cell:
         if self.has_left_wall:
             line= Line(Point(x1,y1), Point(x1,y2))
             self._win.draw_line(line)
+        else:
+            line= Line(Point(x1,y1), Point(x1,y2))
+            self._win.draw_line(line,"white")
+        
         if self.has_right_wall:
             line= Line(Point(x2,y1), Point(x2,y2))
             self._win.draw_line(line)
+        else:   
+            line= Line(Point(x2,y1), Point(x2,y2))
+            self._win.draw_line(line, "white")
         if self.has_top_wall:
             line= Line(Point(x1,y1), Point(x2,y1))
             self._win.draw_line(line)
+        else:    
+            line= Line(Point(x1,y1), Point(x2,y1))
+            self._win.draw_line(line, "white")
         if self.has_bottom_wall:
             line= Line(Point(x1,y2), Point(x2,y2))
             self._win.draw_line(line)
+        else:
+            line= Line(Point(x1,y2), Point(x2,y2))
+            self._win.draw_line(line,"white")
 
 
     def draw_move(self, to_cell, undo=False):
@@ -48,7 +63,7 @@ class Cell:
             fill_color = "gray"
         
 
-        # moving left, potential bug frim the given solution with the starting and end points
+        # moving left
         if self._x1 > to_cell._x1:
             line = Line(Point(self._x1, middle_y),Point(middle_x, middle_y))
             self._win.draw_line(line, fill_color)
