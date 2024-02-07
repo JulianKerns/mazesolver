@@ -48,6 +48,9 @@ class Tests(unittest.TestCase):
                         False,)
         self.assertEqual(m1._cells[-1][-1].has_bottom_wall, False)
 
+
+    
+
             
 
 
