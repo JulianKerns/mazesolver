@@ -45,17 +45,29 @@ class Maze:
             for y in range(self._num_rows):
                 self._cells[x][y].draw_cell(i, j, i + self._cell_size_x, j + self._cell_size_y)
                 j += self._cell_size_y
-                self.animate()
+                self.animate_fast()
             i += self._cell_size_x
             j = self._y1
           
              
 
-    def animate(self):
+    def animate_fast(self):
         if self._win is None:
             return
         self._win.redraw()
-        time.sleep(0.01)
+        time.sleep(0.003)
+
+    def animate_slow(self):
+        if self._win is None:
+            return
+        self._win.redraw()
+        time.sleep(0.05)
+    
+    def animate_slowest(self):
+        if self._win is None:
+            return
+        self._win.redraw()
+        time.sleep(0.2)
 
     def break_entrance_and_exit(self):
         self._cells[0][0].has_top_wall = False
@@ -109,7 +121,7 @@ class Maze:
                            
             
             self.break_walls_R(next_i,next_j)
-            self.animate()
+            self.animate_fast()
     
     def reset_cells_visited(self):
         for x in range(self._num_cols):
@@ -118,7 +130,7 @@ class Maze:
 
 
     def solve_r(self,i,j):
-        self.animate()
+        self.animate_slow()
         self._cells[i][j]._visited = True
         if i == self._num_cols-1 and j == self._num_rows-1:
             return True
@@ -129,6 +141,7 @@ class Maze:
             if self.solve_r(i+1,j):
                 return True
             else:
+                self.animate_slowest()
                 self._cells[i][j].draw_move(self._cells[i+1][j], True)
             
 
@@ -138,6 +151,7 @@ class Maze:
             if self.solve_r(i,j+1):
                 return True
             else:
+                self.animate_slowest()
                 self._cells[i][j].draw_move(self._cells[i][j+1], True)
             
 
@@ -147,6 +161,7 @@ class Maze:
             if self.solve_r(i-1,j):
                 return True
             else:
+                self.animate_slowest()
                 self._cells[i][j].draw_move(self._cells[i-1][j], True)
             
 
@@ -156,6 +171,7 @@ class Maze:
             if self.solve_r(i,j-1):
                 return True
             else:
+                self.animate_slowest()
                 self._cells[i][j].draw_move(self._cells[i][j-1], True)
             
 
